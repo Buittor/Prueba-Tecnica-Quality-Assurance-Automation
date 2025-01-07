@@ -1,0 +1,305 @@
+{
+  "stats": {
+    "suites": 2,
+    "tests": 10,
+    "passes": 8,
+    "pending": 0,
+    "failures": 2,
+    "start": "2025-01-07T20:43:23.258Z",
+    "end": "2025-01-07T20:43:54.519Z",
+    "duration": 31261,
+    "testsRegistered": 10,
+    "passPercent": 80,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "38199ac7-ea81-4c01-8a09-6973c0cfdf27",
+      "title": "",
+      "fullFile": "cypress\\e2e\\Prueba tecnica.cy.js",
+      "file": "cypress\\e2e\\Prueba tecnica.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "d67fce47-3584-468a-9fba-2e75d30db3c2",
+          "title": "Registro de Usuario",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "El formulario debe permitir registrar un usuario con nombre, email y una contraseña",
+              "fullTitle": "Registro de Usuario El formulario debe permitir registrar un usuario con nombre, email y una contraseña",
+              "timedOut": null,
+              "duration": 3993,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('https://test-qa.inlaze.com/auth/sign-up');\ncy.get(selector.data.fullname).type(selector.userInfo.fullname);\ncy.get(selector.data.email).type(selector.userInfo.email);\ncy.get(selector.data.password).type(selector.userInfo.password);\ncy.get(selector.data.passwordconfirm).type(selector.userInfo.password);\ncy.get(selector.data.signup).should('not.be.disabled').and('be.visible').click();\ncy.contains('Successful registration').should('be.visible');",
+              "err": {},
+              "uuid": "f4a56501-a3e0-4b26-869b-d8a437dde2fd",
+              "parentUUID": "d67fce47-3584-468a-9fba-2e75d30db3c2",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "El campo de nombre debe contener mínimo 2 palabras.",
+              "fullTitle": "Registro de Usuario El campo de nombre debe contener mínimo 2 palabras.",
+              "timedOut": null,
+              "duration": 1890,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('https://test-qa.inlaze.com/auth/sign-up');\ncy.get(selector.data.fullname).type('Pedro');\ncy.get(selector.data.email).type(selector.userInfo.email);\ncy.get(selector.data.password).type(selector.userInfo.password);\ncy.get(selector.data.passwordconfirm).type(selector.userInfo.password);\ncy.get(selector.data.signup).should('be.disabled');\ncy.get(selector.data.fullname).clear().type(selector.userInfo.fullname);\ncy.get(selector.data.signup).should('not.be.disabled').and('be.visible').click();",
+              "err": {},
+              "uuid": "045903ed-7e3e-4294-9a76-4b3425ef72b4",
+              "parentUUID": "d67fce47-3584-468a-9fba-2e75d30db3c2",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "El email debe cumplir con el estándar de una dirección de correo electrónico y ser único en la base de datos.",
+              "fullTitle": "Registro de Usuario El email debe cumplir con el estándar de una dirección de correo electrónico y ser único en la base de datos.",
+              "timedOut": null,
+              "duration": 5755,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('https://test-qa.inlaze.com/auth/sign-up');\ncy.get(selector.data.fullname).type(selector.userInfo.fullname);\ncy.get(selector.data.password).type(selector.userInfo.password);\ncy.get(selector.data.passwordconfirm).type(selector.userInfo.password);\ncy.get(selector.data.email).clear().type(selector.emails.invalidEmail);\ncy.get(selector.data.email).should('have.value', selector.emails.invalidEmail);\ncy.get(selector.data.signup).should('be.disabled');\ncy.get(selector.data.email).clear().type(selector.emails.validEmail);\ncy.get(selector.data.email).should('have.value', selector.emails.validEmail);\ncy.get(selector.data.signup).should('not.be.disabled');\ncy.get(selector.data.email).clear().type(selector.emails.duplicateEmail);\ncy.get(selector.data.email).should('have.value', selector.emails.duplicateEmail);\ncy.get(selector.data.signup).should('be.disabled');",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 4000ms: expected '<button.btn.btn-primary>' to be 'disabled'",
+                "estack": "AssertionError: Timed out retrying after 4000ms: expected '<button.btn.btn-primary>' to be 'disabled'\n    at Context.eval (webpack:///./cypress/e2e/Prueba tecnica.cy.js:32:33)",
+                "diff": null
+              },
+              "uuid": "3f051f0d-c52d-4e2c-9c27-9c103834a371",
+              "parentUUID": "d67fce47-3584-468a-9fba-2e75d30db3c2",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "La contraseña debe cumplir con los requisitos: 8 caracteres, una mayúscula, una minúscula, un número y un carácter especial.",
+              "fullTitle": "Registro de Usuario La contraseña debe cumplir con los requisitos: 8 caracteres, una mayúscula, una minúscula, un número y un carácter especial.",
+              "timedOut": null,
+              "duration": 5521,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('https://test-qa.inlaze.com/auth/sign-up');\n// Contraseña con menos de 8 caracteres\ncy.get(selector.data.fullname).type(selector.userInfo.fullname);\ncy.get(selector.data.email).type(selector.userInfo.email);\ncy.get(selector.data.password).type(selector.passwords.passwordshort);\ncy.get(selector.data.passwordconfirm).type(selector.passwords.passwordshort);\ncy.get(selector.data.signup).should('be.disabled').and('be.visible');\n//cy.contains('La contraseña debe tener al menos 8 caracteres e incluir una letra mayúscula, una letra minúscula, un número y un carácter especial.').should('be.visible')\n// Contraseña sin mayúsculas\ncy.get(selector.data.password).clear().type(selector.passwords.passwordwithoutcapitalletters);\ncy.get(selector.data.passwordconfirm).clear().type(selector.passwords.passwordwithoutcapitalletters);\ncy.get(selector.data.signup).should('be.disabled').and('be.visible');\n//cy.contains('La contraseña debe tener al menos 8 caracteres e incluir una letra mayúscula, una letra minúscula, un número y un carácter especial.').should('be.visible')\n// Contraseña sin minúsculas\ncy.get(selector.data.password).clear().type(selector.passwords.passwordwithoutlowercaseletters);\ncy.get(selector.data.passwordconfirm).clear().type(selector.passwords.passwordwithoutlowercaseletters);\ncy.get(selector.data.signup).should('be.disabled').and('be.visible');\n//cy.contains('La contraseña debe tener al menos 8 caracteres e incluir una letra mayúscula, una letra minúscula, un número y un carácter especial.').should('be.visible')\n// Contraseña sin números\ncy.get(selector.data.password).clear().type(selector.passwords.passwordwithoutnumbers);\ncy.get(selector.data.passwordconfirm).clear().type(selector.passwords.passwordwithoutnumbers);\ncy.get(selector.data.signup).should('be.disabled').and('be.visible');\n//cy.contains('La contraseña debe tener al menos 8 caracteres e incluir una letra mayúscula, una letra minúscula, un número y un carácter especial.').should('be.visible')\n// Contraseña sin caracteres especiales\ncy.get(selector.data.password).clear().type(selector.passwords.passwordwithoutspecialcharacters);\ncy.get(selector.data.passwordconfirm).clear().type(selector.passwords.passwordwithoutspecialcharacters);\ncy.get(selector.data.signup).should('be.disabled').and('be.visible');\n//cy.contains('La contraseña debe tener al menos 8 caracteres e incluir una letra mayúscula, una letra minúscula, un número y un carácter especial.').should('be.visible')\n// Contraseña válida\ncy.get(selector.data.password).clear().type(selector.userInfo.password);\ncy.get(selector.data.passwordconfirm).clear().type(selector.userInfo.password);\ncy.get(selector.data.signup).should('not.be.disabled').and('be.visible').click();",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 4000ms: expected '<button.btn.btn-primary>' to be 'disabled'",
+                "estack": "AssertionError: Timed out retrying after 4000ms: expected '<button.btn.btn-primary>' to be 'disabled'\n    at Context.eval (webpack:///./cypress/e2e/Prueba tecnica.cy.js:48:33)",
+                "diff": null
+              },
+              "uuid": "3d11ab87-ad16-4af8-afc4-2729ccb8f595",
+              "parentUUID": "d67fce47-3584-468a-9fba-2e75d30db3c2",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "El formulario no debe ser enviado hasta que todos los campos obligatorios estén completos y sean válidos.",
+              "fullTitle": "Registro de Usuario El formulario no debe ser enviado hasta que todos los campos obligatorios estén completos y sean válidos.",
+              "timedOut": null,
+              "duration": 3333,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('https://test-qa.inlaze.com/auth/sign-up');\ncy.get(selector.data.signup).should('be.disabled');\n// Campo de nombre y verificar que el botón siga deshabilitado\ncy.get(selector.data.fullname).type(selector.userInfo.fullname);\ncy.get(selector.data.signup).should('be.disabled').and('be.visible');\n// Campo de email y verificar que el botón siga deshabilitado\ncy.get(selector.data.email).type(selector.userInfo.email);\ncy.get(selector.data.signup).should('be.disabled').and('be.visible');\n// Campo de contraseña y verificar que el botón siga deshabilitado\ncy.get(selector.data.password).type(selector.userInfo.password);\ncy.get(selector.data.signup).should('be.disabled').and('be.visible');\n// Campo de confirmación de contraseña y verificar que el botón se habilite\ncy.get(selector.data.passwordconfirm).type(selector.userInfo.password);\ncy.get(selector.data.signup).should('not.be.disabled').and('be.visible');\ncy.get(selector.data.fullname).clear().type(selector.userInfo.fullname);\ncy.get(selector.data.email).clear().type(selector.userInfo.email);\ncy.get(selector.data.password).clear().type(selector.userInfo.password);\ncy.get(selector.data.passwordconfirm).clear().type(selector.userInfo.password);\ncy.get(selector.data.signup).should('not.be.disabled').click();",
+              "err": {},
+              "uuid": "a04f86a1-ed78-493d-a831-78eb36ce6974",
+              "parentUUID": "d67fce47-3584-468a-9fba-2e75d30db3c2",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "La contraseña debe ser ingresada dos veces y el sistema debe informar al usuario si ambas coinciden. ",
+              "fullTitle": "Registro de Usuario La contraseña debe ser ingresada dos veces y el sistema debe informar al usuario si ambas coinciden. ",
+              "timedOut": null,
+              "duration": 1459,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('https://test-qa.inlaze.com/auth/sign-up');\ncy.get(selector.data.fullname).type(selector.userInfo.fullname);\ncy.get(selector.data.email).type(selector.userInfo.email);\ncy.get(selector.data.password).type(selector.userInfo.password);\ncy.get(selector.data.passwordconfirm).type(selector.passwords.passwordshort);\ncy.get(selector.data.signup).should('be.disabled').and('be.visible').click({\n  force: true\n});\ncy.contains('Passwords do not match').should('be.visible');",
+              "err": {},
+              "uuid": "98078f3e-1830-4d0a-8c09-85966e5bd7a4",
+              "parentUUID": "d67fce47-3584-468a-9fba-2e75d30db3c2",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "f4a56501-a3e0-4b26-869b-d8a437dde2fd",
+            "045903ed-7e3e-4294-9a76-4b3425ef72b4",
+            "a04f86a1-ed78-493d-a831-78eb36ce6974",
+            "98078f3e-1830-4d0a-8c09-85966e5bd7a4"
+          ],
+          "failures": [
+            "3f051f0d-c52d-4e2c-9c27-9c103834a371",
+            "3d11ab87-ad16-4af8-afc4-2729ccb8f595"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 21951,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        },
+        {
+          "uuid": "820b64e8-a013-4b76-a50b-65d61dc22e7f",
+          "title": "Login de Usuario",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "El usuario debe poder loguearse con el email y la contraseña registrados.",
+              "fullTitle": "Login de Usuario El usuario debe poder loguearse con el email y la contraseña registrados.",
+              "timedOut": null,
+              "duration": 1058,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('https://test-qa.inlaze.com/');\ncy.get(selector.data.email).type(selector.userInfo.email);\ncy.get(selector.data.password).type(selector.userInfo.password);\ncy.get(selector.data.signin).click();",
+              "err": {},
+              "uuid": "b85d99cf-30d6-4791-ba4f-9ae35f15296e",
+              "parentUUID": "820b64e8-a013-4b76-a50b-65d61dc22e7f",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "El formulario de login no debe ser enviado hasta que todos los campos estén diligenciados.",
+              "fullTitle": "Login de Usuario El formulario de login no debe ser enviado hasta que todos los campos estén diligenciados.",
+              "timedOut": null,
+              "duration": 1443,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('https://test-qa.inlaze.com/');\ncy.get(selector.data.signin).should('be.disabled');\ncy.get(selector.data.email).type(selector.userInfo.email);\ncy.get(selector.data.signin).should('be.disabled');\ncy.get(selector.data.email).clear();\ncy.get(selector.data.password).type(selector.userInfo.password);\ncy.get(selector.data.signin).should('be.disabled');\ncy.get(selector.data.email).type(selector.userInfo.email);\ncy.get(selector.data.signin).should('not.be.disabled').click();",
+              "err": {},
+              "uuid": "b72be63a-6269-491f-9da6-4efb994ed3c6",
+              "parentUUID": "820b64e8-a013-4b76-a50b-65d61dc22e7f",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Al ingresar a la plataforma, debe mostrarse el nombre del usuario.",
+              "fullTitle": "Login de Usuario Al ingresar a la plataforma, debe mostrarse el nombre del usuario.",
+              "timedOut": null,
+              "duration": 2742,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('https://test-qa.inlaze.com/');\ncy.get(selector.data.email).type(selector.userInfo.email);\ncy.get(selector.data.password).type(selector.userInfo.password);\ncy.get(selector.data.signin).click();\ncy.contains(selector.userInfo.fullname).should('be.visible');",
+              "err": {},
+              "uuid": "643d0c8f-f39f-490b-8c73-9c266bba9a32",
+              "parentUUID": "820b64e8-a013-4b76-a50b-65d61dc22e7f",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "La plataforma debe permitir al usuario cerrar la sesión.",
+              "fullTitle": "Login de Usuario La plataforma debe permitir al usuario cerrar la sesión.",
+              "timedOut": null,
+              "duration": 1512,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('https://test-qa.inlaze.com/');\ncy.get(selector.data.email).type(selector.userInfo.email);\ncy.get(selector.data.password).type(selector.userInfo.password);\ncy.get(selector.data.signin).click();\ncy.get(selector.data.profilepicture).click();\ncy.get(selector.data.logout).click();\ncy.url().should('include', '/test-qa.inlaze.com/');",
+              "err": {},
+              "uuid": "ffefe8a4-5db7-486a-8b7f-259c5003f2fa",
+              "parentUUID": "820b64e8-a013-4b76-a50b-65d61dc22e7f",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "b85d99cf-30d6-4791-ba4f-9ae35f15296e",
+            "b72be63a-6269-491f-9da6-4efb994ed3c6",
+            "643d0c8f-f39f-490b-8c73-9c266bba9a32",
+            "ffefe8a4-5db7-486a-8b7f-259c5003f2fa"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 6755,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports",
+        "overwrite": true,
+        "html": true,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}
